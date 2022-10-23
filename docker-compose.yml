@@ -1,9 +1,37 @@
-version: "3"
+version: "3.8"
 
 services:
-  djangoapp:
-    build: .
-    ports:
-      - "5000:5000"
+  database:
+    image: postgres
+    container_name: database
+    hostname: database
     volumes:
-      - ./project:/app
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build: ./backend
+    container_name: backend
+    hostname: backend
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - database
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    hostname: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+networks:
+  default:
+    name: finnlands-fosters-website

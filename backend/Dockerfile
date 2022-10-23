@@ -4,12 +4,12 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
 RUN mkdir /app
-COPY ./finnlands_backend/requirements.txt /app
+COPY ./requirements.txt /app
 
 # Install required package
 RUN apk update && \
     apk add --no-cache --virtual .build-deps \
-    ca-certificates gcc postgresql-dev linux-headers musl-dev \
+    ca-certificates gcc postgresql-dev linux-headers musl-dev libpq-dev python3-dev \
     libffi-dev jpeg-dev zlib-dev \
     git bash
 
@@ -17,7 +17,5 @@ RUN apk update && \
 RUN pip3 install --upgrade pip
 RUN pip3 install -r /app/requirements.txt
 
-COPY ./finnlands_backend/ /app
+COPY ./ /app
 WORKDIR /app
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:5000"]
