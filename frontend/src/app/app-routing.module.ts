@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'contact', component: ContactUsComponent, title: 'Finnland\'s Fosters - Contact Us' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, title: 'Finnland\'s Fosters - 404' }
-
 ];
 
 @NgModule({
