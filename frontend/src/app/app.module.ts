@@ -2,23 +2,22 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-
-import { HomepageComponent } from './core/homepage/homepage.component';
-import { HowToHelpComponent } from './core/how-to-help/how-to-help.component';
-import { ContactUsComponent } from './core/contact-us/contact-us.component';
+//import { CoreModule } from './core/core.module';
+import { LayoutModule } from './layout/layout.module';
+//import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomepageComponent,
-    HowToHelpComponent,
-    ContactUsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //CoreModule,
+    LayoutModule,
+    //SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
