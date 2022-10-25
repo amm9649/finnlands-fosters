@@ -7,11 +7,11 @@ import { ContactUsComponent } from './core/contact-us/contact-us.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '/home', component: HomepageComponent },
-  { path: '/how-to-help', component: HowToHelpComponent },
-  { path: '/contact-us', component: ContactUsComponent },
+  { path: 'home', component: HomepageComponent, title: 'Finnland\'s Fosters - Home' },
+  { path: 'how-to-help', component: HowToHelpComponent, title: 'Finnland\'s Fosters - How to Help' },
+  { path: 'contact', component: ContactUsComponent, title: 'Finnland\'s Fosters - Contact Us' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent, title: 'Finnland\'s Fosters - 404' }
 ];
 
 @NgModule({
