@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1-#2#76!lcb)ldmtko!%savj$$kh15aqu(qsj_cgkshk+l97rh
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '0.0.0.0'
+    '0.0.0.0', '127.0.0.1'
 ]
 
 
@@ -43,15 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 ]
-
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,12 +80,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'database',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'devdb',
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': os.environ.get('POSTGRES_NAME'),
+        #'USER': os.environ.get('POSTGRES_USER'),
+        #'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        #'HOST': 'database',
+        #'PORT': 5432,
     }
 }
 
