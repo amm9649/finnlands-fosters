@@ -10,8 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-import os
-import datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,14 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1-#2#76!lcb)ldmtko!%savj$$kh15aqu(qsj_cgkshk+l97rh'
+SECRET_KEY = 'django-insecure-@hcboo86apui_k4*6$b0$x=-uvtr%4o!3@1o)@rimzwtj8t3oo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '0.0.0.0', '127.0.0.1'
-]
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -40,19 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
-    'api_adopt',
-    'api_raffle',
-    'api_user',
 ]
 
 MIDDLEWARE = [
@@ -92,13 +76,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'devdb',
-        #'ENGINE': 'django.db.backends.postgresql',
-        #'NAME': os.environ.get('POSTGRES_NAME'),
-        #'USER': os.environ.get('POSTGRES_USER'),
-        #'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        #'HOST': 'database',
-        #'PORT': 5432,
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -143,6 +121,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SECURE = True

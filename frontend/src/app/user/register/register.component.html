@@ -1,0 +1,19 @@
+<div>
+  <div>
+	<input type="email" name="email" ngModel [email]=true>
+  </div>
+  <div>
+    <p-password [(ngModel)]="user.password" [toggleMask]="true"></p-password>
+  </div>
+</div>
+
+<button type="button" (click)="register()" >Register</button>
+
+<!--
+<h5>Invalid</h5>
+    <div class="field">
+        <p:outputLabel for="username2" styleClass="block">Username</p:outputLabel>
+        <p:inputText id="username2" styleClass="block ui-state-error"/>
+        <small class="block ui-state-error">Username is not available.</small>
+    </div>
+-->
