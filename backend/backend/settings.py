@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@hcboo86apui_k4*6$b0$x=-uvtr%4o!3@1o)@rimzwtj8t3oo'
+SECRET_KEY = 'django-insecure-=4dx556cli+!v&l*fgzd!w_9s_tr%4wq)q8*li%t)#%0uho3g6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'accounts.apps.AccountsConfig',
+    'adopt.apps.AdoptConfig',
+    'event.apps.EventConfig',
+    'raffle.apps.RaffleConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +126,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+LOGIN_REDIRECT_URL = '/api/accounts/profile/'
