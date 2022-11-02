@@ -1,0 +1,25 @@
+.header-container {
+    background-color: lavender;
+    padding: 0.5em;
+    flex-shrink: 0;
+}
+
+.content-container {
+    padding: 1em;
+    margin: 0em 4em 0em 4em;
+    background-color: white;
+    flex: 1 0 auto;
+}
+
+.footer-container {
+    background-color: lavender;
+    padding: 0.5em;
+    flex-shrink: 0;
+}
+
+.body-container {
+    background-color: lightyellow;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}

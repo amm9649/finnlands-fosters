@@ -15,7 +15,10 @@ export class HeaderComponent implements OnInit {
     this.items = [
       { label: 'Home', routerLink: 'home' },
       { label: 'How to Help', routerLink: 'how-to-help' },
-      { label: 'Contact Us', routerLink: 'contact' }
+      { label: 'Contact Us', routerLink: 'contact' },
+      { label: 'Login', routerLink: 'account/login', visible: true }, // visible when not logged in
+      { label: 'Register', routerLink: 'account/register' }, // visible when not logged in
+      { label: 'Logout', routerLink: 'account/logout', visible: false } // visible when logged in
     ]
   }
 
