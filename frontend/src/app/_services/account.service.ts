@@ -36,18 +36,17 @@ export class AccountService {
       }));
   }
 
+  logout() {
+    // remove user from local storage and set current user to null
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    this.router.navigate(['/account/login']);
+  }
+
+  register(user: User) {
+    return this.http.post(`${environment.apiUrl}/users/register`, user);
+  }
 /*
-    logout() {
-        // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
-        this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
-    }
-
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
-    }
-
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
