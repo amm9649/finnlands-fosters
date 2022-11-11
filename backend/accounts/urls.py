@@ -1,10 +1,9 @@
-from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
-from accounts import views
+from django.urls import path, include
+from rest_framework.authtoken import views
 
-# api/accounts/
+# accounts/
 urlpatterns = [
-    path('profile/', views.ProfileView.as_view()),
+    path('auth/', include('dj_rest_auth.urls')),
+    path('auth/register/', include('dj_rest_auth.registration.urls')),
+    path('auth/token/', views.obtain_auth_token),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)

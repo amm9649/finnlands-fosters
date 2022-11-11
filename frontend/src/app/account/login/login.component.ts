@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
@@ -36,18 +36,19 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.accountService.login(this.f['username'].value, this.f['password'].value)
+    this.accountService.login(this.f['email'].value, this.f['password'].value)
       .pipe(first())
       .subscribe({
         next: () => {
           console.log(this.f);
+          this.accountService.isLoggedIn = true;
           this.router.navigateByUrl('/account/profile');
         },
         error: error => {
           console.log(error);
           this.loading = false;
         }
-      })
+      });
   }
 
 }
