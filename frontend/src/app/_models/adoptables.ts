@@ -1,4 +1,5 @@
 export class AdoptableCat{
+	url: string;
 	finnId: string;
 	name: string;
 	hasDistemperShots: boolean;
@@ -20,7 +21,9 @@ export class AdoptableCat{
 }
 
 export class CatPicture{
+	url: String;
+	title: String;
 	image: File;
 	caption: string;
-	url: string;
+	cats: string[];
 }

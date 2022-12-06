@@ -27,16 +27,16 @@ export class HeaderComponent implements OnInit {
     ];
 
     this.loginItems = [
-      { label: 'Login', routerLink: 'login' },
-      { label: 'Register', routerLink: 'register' },
+      { label: 'Login', routerLink: 'account/login' },
+      { label: 'Register', routerLink: 'account/register' },
     ];
 
     this.logoutItems = [
-      { label: 'Profile', routerLink: 'profile' },
-      { label: 'Adoption Contract', routerLink: 'contract' },
-      { label: 'Messages', routerLink: 'messages' },
-      { label: 'Settings', routerLink: 'settings' },
-      { label: 'Logout', routerLink: 'logout' },
+      { label: 'Profile', routerLink: 'account/profile' },
+      { label: 'Adoption Contract', routerLink: 'account/contract' },
+      { label: 'Messages', routerLink: 'account/messages' },
+      { label: 'Settings', routerLink: 'account/settings' },
+      { label: 'Logout', routerLink: 'account/logout' },
     ];
   }
 }

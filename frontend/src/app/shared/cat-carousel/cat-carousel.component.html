@@ -1,0 +1,8 @@
+<div *ngFor="let pic of pictures">
+    <p-carousel [value]="pictures">
+        <ng-template let-pic pTemplate="picture">
+        	<img src="{{pic.image}}" alt="{{pic.caption}}" width="200" height="200">
+            <p>{{pic.caption}}</p>
+        </ng-template>
+    </p-carousel>
+</div>
