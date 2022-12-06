@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    #path('events/', include('events.urls')),
-    path('api/adopt/', include('adopt.urls')),
-    #path('raffle/', include('raffle.urls')),
+    path('api/accounts/', include('accounts.urls')),
+    #path('api/events/', include('events.urls')),
+    #path('api/adopt/', include('adopt.urls')),
+    #path('api/raffle/', include('raffle.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

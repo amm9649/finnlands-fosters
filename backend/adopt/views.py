@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status
+from rest_framework.views import APIView
 from rest_framework.generics import (
 	CreateAPIView,
 	RetrieveAPIView,
@@ -8,6 +9,7 @@ from rest_framework.generics import (
 	DestroyAPIView
 )
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from rest_framework.permissions import AllowAny, IsAdminUser
 from adopt.models import AdoptableCat, CatPicture
 from adopt.serializers import AdoptableCatSerializer, CatPictureSerializer

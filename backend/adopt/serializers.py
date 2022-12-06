@@ -2,27 +2,27 @@ from rest_framework import serializers
 from adopt.models import AdoptableCat, CatPicture
 
 class CatPictureSerializer(serializers.HyperlinkedModelSerializer):
+	url = serializers.HyperlinkedIdentityField(view_name='catpicture-detail', lookup_field='pk')
+	title = serializers.CharField()
 	image = serializers.ImageField()
 	caption = serializers.CharField(allow_blank=True)
 	cats = serializers.HyperlinkedRelatedField(many=True, view_name='adoptablecat-detail', format='html', queryset=AdoptableCat.objects.all())
+
 	class Meta:
 		model = CatPicture
-		fields = ('url', 'image', 'caption', 'cats')
+		depth = 1
+		fields = ('url', 'title', 'image', 'caption', 'cats')
 
 	def create(self, form):
-		image, caption = form.get('image'), form.get('caption')
-		picture = CatPicture.objects.create(image=image, caption=caption)
-		picture.save()
-
-		#catids = form.get('cats')
-		#catids = [cat.pk for cat in catids]
-		#cats = AdoptableCat.objects.filter(pk__in=catids)
-		#for c in catids:
-		#	picture.cats.add(c)
-		
+		cats = form.pop('cats', [])
+		picture = CatPicture.objects.create(**form)
+		if cats:
+			picture.cats.set(cats)
+			
 		return picture
 
 class AdoptableCatSerializer(serializers.HyperlinkedModelSerializer):
+	url = serializers.HyperlinkedIdentityField(view_name='adoptablecat-detail', lookup_field='pk')
 	finnId = serializers.CharField(max_length=5, label="Finn ID")
 	name = serializers.CharField(max_length=40, label="Name")
 	hasDistemperShots = serializers.BooleanField(default=False, label="Received Distemper")
@@ -40,14 +40,12 @@ class AdoptableCatSerializer(serializers.HyperlinkedModelSerializer):
 	adoptionFee = serializers.IntegerField(label="Adoption Fee")
 	sex = serializers.CharField(max_length=1, label='Sex (M, F)')
 	healthConditionStatus = serializers.CharField(max_length=1, label='Health Status (H, C, A)')
-	pictures = serializers.HyperlinkedRelatedField(many=True, view_name='catpicture-detail', read_only=True, allow_null=True)
+	pictures = serializers.HyperlinkedRelatedField(many=True, view_name='catpicture-detail', read_only=True)
 
 	class Meta:
 		model = AdoptableCat
+		depth = 1
 		fields = (''
 			'url', 'finnId', 'name', 'hasDistemperShots', 'hasRabiesVax', 'snapTested', 'isFixed',
 			'isAvailable', 'birthDate', 'intakeDate', 'adoptDate', 'deathDate', 'coatDescription',
 			'genDescription', 'adoptedName', 'adoptionFee', 'sex', 'healthConditionStatus', 'pictures')
-
-	def create(self, validated_data):
-		return AdoptableCat.objects.create(**validated_data)

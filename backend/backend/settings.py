@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#jt-4u%9-e_*_k22up@r$e8x4s6ad)ec70rce*vctcxq1$y*!j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -149,3 +149,7 @@ REST_FRAMEWORK = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+
+AUTH_USER_MODEL = 'accounts.FinnlandsUser'
+
+SITE_ID = 1
