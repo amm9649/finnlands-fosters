@@ -12,6 +12,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   backend:
+    image: tobeans-backend:latest
     build: ./backend
     container_name: backend
     hostname: backend
@@ -25,6 +26,7 @@ services:
     depends_on:
       - database
   frontend:
+    image: tobeans-frontend:latest
     build: ./frontend
     container_name: frontend
     hostname: frontend
@@ -34,4 +36,4 @@ services:
       - backend
 networks:
   default:
-    name: finnlands-fosters-website
+    name: toebeans-website

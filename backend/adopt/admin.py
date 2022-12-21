@@ -6,14 +6,13 @@ class CatPictureInline(admin.TabularInline):
 
 @admin.register(AdoptableCat)
 class AdoptableCatAdmin(admin.ModelAdmin):
-	list_display = ('Finn ID', 'Name', 'Sex', 'Fixed', 'Intake Date', 'Available')
-	list_filter = ('Available', 'Sex', 'Intake Date', 'Adoption Date')
+	list_display = ('finnId', 'name', 'sex', 'isFixed', 'intakeDate', 'isAvailable')
+	list_filter = ('isAvailable', 'sex', 'intakeDate', 'adoptDate')
 	fieldsets = (
-		(None, {'fields':('Finn ID', 'Name', 'Sex', 'Available')}),
-		(None, {'fields':('Date of Birth', 'Intake Date', 'Date of Death')}),
-		('Vetting', {'fields':('Distemper', 'Rabies', 'SNAP', 'Fixed', 'Health Condition Status')}),
-		('Description', {'fields':('Appearance', 'Personality')}),
-		('Adoption Data', {'fields':('Adoption Date', 'Name after Adoption', 'Adoption Fee')}),
+		(None, {'fields':('finnId', 'name', 'sex', 'isAvailable', 'birthDate', 'intakeDate', 'deathDate')}),
+		('Vetting', {'fields':('hasDistemperShots', 'hasRabiesVax', 'snapTested', 'isFixed', 'healthConditionStatus')}),
+		('Description', {'fields':('coatDescription', 'genDescription')}),
+		('Adoption Data', {'fields':('adoptDate', 'adoptedName', 'adoptionFee')}),
 		)
 	inlines = [CatPictureInline]
 

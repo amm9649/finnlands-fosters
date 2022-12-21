@@ -31,6 +31,7 @@ class AdoptableCatSerializer(serializers.HyperlinkedModelSerializer):
 	isFixed = serializers.BooleanField(default=False, label="Spayed/Neutered")
 	isAvailable = serializers.BooleanField(default=False, label="Available for Adoption")
 	birthDate = serializers.DateField(allow_null=True, label="Date of Birth")
+	dobApproximated = serializers.BooleanField(default=True, label="DOB is Approximated")
 	intakeDate = serializers.DateField(allow_null=True, label="Date of Intake")
 	adoptDate = serializers.DateField(allow_null=True, label="Date of Adoption")
 	deathDate = serializers.DateField(allow_null=True, label="Date of Death")

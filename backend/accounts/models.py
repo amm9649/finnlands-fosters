@@ -24,3 +24,6 @@ class FinnlandsUser(AbstractUser):
 
 	def __str__(self):
 		return self.email
+
+#class Adopter(models.Model):
+#	user = models.ForeignKey(FinnlandsUser, related_name='adopter-profile', on_delete=models.CASCADE)
